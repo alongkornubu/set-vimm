@@ -11,10 +11,11 @@ set fileencoding=utf-8
 " set line at 100 characters
 set colorcolumn=100
 highlight ColorColumn ctermbg=0 guibg=purple
+set nocompatible
 call plug#begin()
 Plug 'Xuyuanp/nerdtree-git-plugin'
-"Plug 'itchyny/lightline.vim'
-Plug 'nvim-lualine/lualine.nvim'
+Plug 'sheerun/vim-polyglot'
+Plug 'itchyny/lightline.vim'
 Plug 'airblade/vim-gitgutter' "gitgutter
 Plug 'http://github.com/tpope/vim-surround' " Surrounding ysw)
 Plug 'https://github.com/preservim/nerdtree' " NerdTree
@@ -65,6 +66,8 @@ let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 "gitgutter not work
 " This path probably won't work
+let s:grep_available=0
+let g:gitgutter_async=0
 let g:gitgutter_realtime = 1  
 let g:gitgutter_eager = 1
 " terminal mode remap to go to normal mode by pressing Esc key
@@ -73,18 +76,19 @@ let g:gitgutter_eager = 1
 
 inoremap <expr> <Tab> pumvisible() ? coc#_select_confirm() : "<Tab>"
 
-" air-line
-" let g:airline_powerline_fonts = 1
+"air-line
 
-" if !exists('g:airline_symbols')
-"     let g:airline_symbols = {}
-" endif
+let g:airline_powerline_fonts = 1
+let g:lightline = {'colorscheme':'onedark'}
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
 
-" " airline symbols
-" let g:airline_left_sep = ''
-" let g:airline_left_alt_sep = ''
-" let g:airline_right_sep = ''
-" let g:airline_right_alt_sep = ''
-" let g:airline_symbols.branch = ''
-" let g:airline_symbols.readonly = ''
-" let g:airline_symbols.linenr = ''
+" airline symbols
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
