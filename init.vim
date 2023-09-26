@@ -15,7 +15,6 @@ Plug 'overcache/NeoSolarized'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive' "Git 
 Plug 'Yggdroot/indentLine'
-Plug 'airblade/vim-gitgutter' "gitgutter
 Plug 'http://github.com/tpope/vim-surround' " Surrounding ysw)
 Plug 'https://github.com/preservim/nerdtree' " NerdTree
 Plug 'https://github.com/tpope/vim-commentary' " For Commenting gcc & gc
@@ -33,7 +32,7 @@ Plug 'https://github.com/rstacruz/vim-closer' " For brackets autocompletion
 " Auto-completion  For Javascript
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'} " this is for auto complete, prettier and tslinting
 
-let g:coc_global_extensions = ['coc-tslint-plugin', 'coc-tsserver', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier']  " list of CoC extensions needed
+let g:coc_global_extensions = ['coc-tslint-plugin', 'coc-tsserver', 'coc-css', 'coc-html','coc-git' ,'coc-json', 'coc-prettier'] 
 
 Plug 'jiangmiao/auto-pairs' "this will auto close ( [ {
 
@@ -43,7 +42,7 @@ Plug 'HerringtonDarkholme/yats.vim'
 Plug 'maxmellon/vim-jsx-pretty'
 
 set encoding=UTF-8
-
+set updatetime=100
 call plug#end()
 
 nnoremap <C-f> :NERDTreeFocus<CR>
@@ -64,8 +63,6 @@ let g:NERDTreeDirArrowCollapsible="~"
 let g:indentLine_color_term = 239
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
-let g:gitgutter_realtime = 1  
-let g:gitgutter_eager = 1
 " terminal mode remap to go to normal mode by pressing Esc key
 :tnoremap <Esc> <C-\><C-n>
 
