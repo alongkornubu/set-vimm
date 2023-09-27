@@ -12,9 +12,11 @@ set smartcase
 highlight ColorColumn ctermbg=0 guibg=purple
 :set nocompatible
 call plug#begin()
+" A bunch of useful language related snippets (ultisnips is the engine).
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'joshdick/onedark.vim'
-
-Plug 'airblade/vim-gitgutter' "Git Diff
+" Show git file changes in the gutter.
+Plug 'mhinz/vim-signify'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive' "Git 
 Plug 'Yggdroot/indentLine' " indent line
@@ -43,7 +45,6 @@ let g:coc_global_extensions = ["coc-css",
             \ "coc-python",
             \ "coc-tslint",
             \ "coc-tsserver",
-            \ "coc-ultisnips",
             \ "coc-tailwindcss",
             \ "coc-vetur"]
 
@@ -117,16 +118,8 @@ let g:indentLine_char_list = ['|', '¦', '┆', '┊']
  endif
 
 let g:airline_extensions = ['branch', 'hunks', 'coc', 'tabline']
-" let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-" let g:airline#extensions#tabline#buffer_nr_show = 1
-" let g:airline#extensions#default#layout = [['a', 'b', 'c'], ['x', 'z', 'warning', 'error']]
-" let g:airline_skip_empty_sections = 1
-let airline#extensions#coc#stl_format_err = '%E{[%e(#%fe)]}'
-let airline#extensions#coc#stl_format_warn = '%W{[%w(#%fw)]}'
-" Configure error/warning section to use coc.nvim
-let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
-let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
-"let g:airline_theme = '<set to something sexy>'
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline#extensions#tabline#buffer_nr_show = 1
 
  " airline symbols
  let g:airline_left_sep = ''
@@ -136,7 +129,7 @@ let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_
  let g:airline_symbols.branch = ''
  let g:airline_symbols.readonly = ''
  let g:airline_symbols.linenr = ''
-let g:airline_section_error = ''
+"let g:airline_section_error = ''
 inoremap <expr> <Tab> pumvisible() ? coc#_select_confirm() : "<Tab>"
 
 " Coc.nvim mappings
@@ -151,5 +144,34 @@ nmap <leader>do <Plug>(coc-codeaction)
 nmap <leader>rn <Plug>(coc-rename)
 nmap <leader>i :AutoImportToggle<CR>
 
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
 
 
+let g:user_emmet_settings = {
+\  'variables': {'lang': 'ja'},
+\  'html': {
+\    'default_attributes': {
+\      'option': {'value': v:null},
+\      'textarea': {'id': v:null, 'name': v:null, 'cols': 10, 'rows': 10},
+\    },
+\    'snippets': {
+\      'html:5': "<!DOCTYPE html>\n"
+\              ."<html lang=\"${lang}\">\n"
+\              ."<head>\n"
+\              ."\t<meta charset=\"${charset}\">\n"
+\              ."\t<title></title>\n"
+\              ."\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
+\              ."</head>\n"
+\              ."<body>\n\t${child}|\n</body>\n"
+\              ."</html>",
+\    },
+\  },
+\}
+
+" Trigger configuration. You need to change this to something other than <tab> if you use one of the following:
+" - https://github.com/Valloric/YouCompleteMe
+" - https://github.com/nvim-lua/completion-nvim
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
