@@ -7,14 +7,17 @@ syntax on
 :set softtabstop=4
 :set mouse=a
 set colorcolumn=100
-set termguicolors 
+set ignorecase
+set smartcase
 highlight ColorColumn ctermbg=0 guibg=purple
 :set nocompatible
 call plug#begin()
-Plug 'overcache/NeoSolarized'
-Plug 'sheerun/vim-polyglot'
+Plug 'joshdick/onedark.vim'
+
+Plug 'airblade/vim-gitgutter' "Git Diff
+"Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive' "Git 
-Plug 'Yggdroot/indentLine'
+Plug 'Yggdroot/indentLine' " indent line
 Plug 'http://github.com/tpope/vim-surround' " Surrounding ysw)
 Plug 'https://github.com/preservim/nerdtree' " NerdTree
 Plug 'https://github.com/tpope/vim-commentary' " For Commenting gcc & gc
@@ -27,12 +30,12 @@ Plug 'https://github.com/tc50cal/vim-terminal' " Vim Terminal
 Plug 'https://github.com/preservim/tagbar' " Tagbar for code navigation
 Plug 'https://github.com/terryma/vim-multiple-cursors' " CTRL + N for multiple cursors
 Plug 'https://github.com/rstacruz/vim-closer' " For brackets autocompletion
-
+Plug 'neovim/nvim-lspconfig' " Configuration for Nvim LSP
 
 " Auto-completion  For Javascript
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'} " this is for auto complete, prettier and tslinting
 
-let g:coc_global_extensions = ['coc-tslint-plugin', 'coc-tsserver', 'coc-css', 'coc-html','coc-git' ,'coc-json', 'coc-prettier'] 
+let g:coc_global_extensions = ['coc-tslint-plugin', 'coc-tsserver', 'coc-css', 'coc-html','coc-prettier','coc-git']
 
 Plug 'jiangmiao/auto-pairs' "this will auto close ( [ {
 
@@ -41,9 +44,11 @@ Plug 'yuezk/vim-js'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'maxmellon/vim-jsx-pretty'
 
+
+set updatetime=250
 set encoding=UTF-8
-set updatetime=100
 call plug#end()
+
 
 nnoremap <C-f> :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
@@ -54,7 +59,7 @@ nmap <F8> :TagbarToggle<CR>
 
 :set completeopt-=preview " For No Previews
 
-:colorscheme NeoSolarized
+:colorscheme onedark
 
 let g:NERDTreeDirArrowExpandable="+"
 let g:NERDTreeDirArrowCollapsible="~"
@@ -67,19 +72,25 @@ let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 :tnoremap <Esc> <C-\><C-n>
 
 " air-line
-let g:airline_powerline_fonts = 1
+"let g:airline_powerline_fonts = 1
 
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
+ if !exists('g:airline_symbols')
+     let g:airline_symbols = {}
+ endif
 
-" airline symbols
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = ''
+ " airline symbols
+ let g:airline_left_sep = ''
+ let g:airline_left_alt_sep = ''
+ let g:airline_right_sep = ''
+ let g:airline_right_alt_sep = ''
+ let g:airline_symbols.branch = ''
+ let g:airline_symbols.readonly = ''
+ let g:airline_symbols.linenr = ''
 
 inoremap <expr> <Tab> pumvisible() ? coc#_select_confirm() : "<Tab>"
+
+
+
+
+
+
