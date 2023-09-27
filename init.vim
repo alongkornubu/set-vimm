@@ -35,7 +35,16 @@ Plug 'neovim/nvim-lspconfig' " Configuration for Nvim LSP
 " Auto-completion  For Javascript
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'} " this is for auto complete, prettier and tslinting
 
-let g:coc_global_extensions = ['coc-tslint-plugin', 'coc-tsserver', 'coc-css', 'coc-html','coc-prettier','coc-git']
+let g:coc_global_extensions = 
+[
+	'coc-tslint-plugin', 
+	'coc-tsserver', 
+	'coc-css', 
+	'coc-html',
+	'coc-prettier',
+	'coc-git'
+
+]
 
 Plug 'jiangmiao/auto-pairs' "this will auto close ( [ {
 
@@ -86,11 +95,20 @@ let g:indentLine_char_list = ['|', '¦', '┆', '┊']
  let g:airline_symbols.branch = ''
  let g:airline_symbols.readonly = ''
  let g:airline_symbols.linenr = ''
-
+let g:airline_section_error = ''
 inoremap <expr> <Tab> pumvisible() ? coc#_select_confirm() : "<Tab>"
 
-
-
+" Coc.nvim mappings
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gr <Plug>(coc-references)
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nnoremap <silent> <space>s :<C-u>CocList -I symbols<cr>
+nnoremap <silent> <space>d :<C-u>CocList diagnostics<cr>
+nmap <leader>do <Plug>(coc-codeaction)
+nmap <leader>rn <Plug>(coc-rename)
+nmap <leader>i :AutoImportToggle<CR>
 
 
 

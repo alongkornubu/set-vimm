@@ -1,0 +1,26 @@
+{
+  "eslint.autoFixOnSave": true,
+  "eslint.filetypes": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+  "coc.preferences.formatOnSaveFiletypes": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "tsserver.formatOnType": true,
+  "coc.preferences.formatOnType": true,
+  "eslint.exclude": [
+    "**/readme.md"
+  ],
+  "snippets.ultisnips.pythonPrompt": false
+}
+
+" auto Save
+" Enable auto-save
+autocmd InsertLeave,FocusLost * silent! write
+
+" Disable auto-save for specific file types
+autocmd FileType gitcommit autocmd! InsertLeave,FocusLost
+
+" Visual feedback for auto-save
+autocmd BufWritePost * if &ft !~# 'commit' | echo "File saved" | endif
