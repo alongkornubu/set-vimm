@@ -12,12 +12,16 @@ set smartcase
 highlight ColorColumn ctermbg=0 guibg=purple
 :set nocompatible
 call plug#begin()
+Plug 'kien/ctrlp.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 " A bunch of useful language related snippets (ultisnips is the engine).
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'joshdick/onedark.vim'
 " Show git file changes in the gutter.
 Plug 'mhinz/vim-signify'
 Plug 'sheerun/vim-polyglot'
+Plug 'voldikss/vim-floaterm' "Floatterm
 Plug 'tpope/vim-fugitive' "Git 
 Plug 'Yggdroot/indentLine' " indent line
 Plug 'http://github.com/tpope/vim-surround' " Surrounding ysw)
@@ -122,9 +126,9 @@ let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline#extensions#tabline#buffer_nr_show = 1
 
  " airline symbols
- let g:airline_left_sep = ''
- let g:airline_left_alt_sep = ''
- let g:airline_right_sep = ''
+" let g:airline_left_sep = ''
+ "let g:airline_left_alt_sep = ''
+ "let g:airline_right_sep = ''
  let g:airline_right_alt_sep = ''
  let g:airline_symbols.branch = ''
  let g:airline_symbols.readonly = ''
@@ -144,10 +148,8 @@ nmap <leader>do <Plug>(coc-codeaction)
 nmap <leader>rn <Plug>(coc-rename)
 nmap <leader>i :AutoImportToggle<CR>
 
-let g:user_emmet_install_global = 0
-autocmd FileType html,css EmmetInstall
 
-
+" Emmet
 let g:user_emmet_settings = {
 \  'variables': {'lang': 'ja'},
 \  'html': {
@@ -168,6 +170,10 @@ let g:user_emmet_settings = {
 \    },
 \  },
 \}
+
+" Prettier
+
+command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
 
 " Trigger configuration. You need to change this to something other than <tab> if you use one of the following:
 " - https://github.com/Valloric/YouCompleteMe
