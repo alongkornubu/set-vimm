@@ -9,7 +9,7 @@
   "diagnostic.infoSign": "" ,
   "diagnostic.hintSign": "",
   "diagnostic.warningSign": "⚠",
-  "diagnostic.errorSign":"❌",
+  "diagnostic.errorSign":"",
   "diagnostic.enable": true,
   "diagnostic.signOffset": 9999999,
   "diagnostic.highlightOffset": 9999999,
@@ -44,3 +44,4 @@
   "python.pythonPath": "python"
 }
 
+symbols = {error = ' ', warn = ' ', info = ' ', hint = ' '} },

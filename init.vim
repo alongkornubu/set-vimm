@@ -13,10 +13,8 @@ highlight ColorColumn ctermbg=0 guibg=purple
 :set nocompatible
 call plug#begin()
 Plug 'kien/ctrlp.vim'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
 " A bunch of useful language related snippets (ultisnips is the engine).
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+"Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'joshdick/onedark.vim'
 " Show git file changes in the gutter.
 Plug 'mhinz/vim-signify'
@@ -48,8 +46,8 @@ let g:coc_global_extensions = ["coc-css",
             \ "coc-prettier",
             \ "coc-python",
             \ "coc-tslint",
-            \ "coc-tsserver",
             \ "coc-tailwindcss",
+            \ "coc-pyright",
             \ "coc-vetur"]
 
 Plug 'jiangmiao/auto-pairs' "this will auto close ( [ {
@@ -134,6 +132,7 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
  let g:airline_symbols.readonly = ''
  let g:airline_symbols.linenr = ''
 "let g:airline_section_error = ''
+
 inoremap <expr> <Tab> pumvisible() ? coc#_select_confirm() : "<Tab>"
 
 " Coc.nvim mappings
@@ -149,27 +148,6 @@ nmap <leader>rn <Plug>(coc-rename)
 nmap <leader>i :AutoImportToggle<CR>
 
 
-" Emmet
-let g:user_emmet_settings = {
-\  'variables': {'lang': 'ja'},
-\  'html': {
-\    'default_attributes': {
-\      'option': {'value': v:null},
-\      'textarea': {'id': v:null, 'name': v:null, 'cols': 10, 'rows': 10},
-\    },
-\    'snippets': {
-\      'html:5': "<!DOCTYPE html>\n"
-\              ."<html lang=\"${lang}\">\n"
-\              ."<head>\n"
-\              ."\t<meta charset=\"${charset}\">\n"
-\              ."\t<title></title>\n"
-\              ."\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
-\              ."</head>\n"
-\              ."<body>\n\t${child}|\n</body>\n"
-\              ."</html>",
-\    },
-\  },
-\}
 
 " Prettier
 
@@ -178,6 +156,6 @@ command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
 " Trigger configuration. You need to change this to something other than <tab> if you use one of the following:
 " - https://github.com/Valloric/YouCompleteMe
 " - https://github.com/nvim-lua/completion-nvim
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsJumpForwardTrigger="<c-b>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
