@@ -19,7 +19,6 @@ Plug 'joshdick/onedark.vim'
 " Show git file changes in the gutter.
 Plug 'mhinz/vim-signify'
 Plug 'sheerun/vim-polyglot'
-Plug 'voldikss/vim-floaterm' "Floatterm
 Plug 'tpope/vim-fugitive' "Git 
 Plug 'Yggdroot/indentLine' " indent line
 Plug 'http://github.com/tpope/vim-surround' " Surrounding ysw)
@@ -44,7 +43,6 @@ let g:coc_global_extensions = ["coc-css",
             \ "coc-html",
             \ "coc-json",
             \ "coc-prettier",
-            \ "coc-python",
             \ "coc-tslint",
             \ "coc-tailwindcss",
             \ "coc-pyright",
@@ -124,9 +122,9 @@ let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline#extensions#tabline#buffer_nr_show = 1
 
  " airline symbols
-" let g:airline_left_sep = ''
- "let g:airline_left_alt_sep = ''
- "let g:airline_right_sep = ''
+ let g:airline_left_sep = ''
+ let g:airline_left_alt_sep = ''
+ let g:airline_right_sep = ''
  let g:airline_right_alt_sep = ''
  let g:airline_symbols.branch = ''
  let g:airline_symbols.readonly = ''
